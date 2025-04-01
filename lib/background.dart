@@ -10,7 +10,7 @@ class Background extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.white70, Colors.deepPurpleAccent],
+          colors: [Color.fromARGB(179, 213, 154, 154), Colors.deepPurpleAccent],
         ),
       ),
     );

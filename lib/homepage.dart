@@ -1,7 +1,7 @@
-// homepage.dart
 import 'package:flutter/material.dart';
 import 'background.dart';
 import 'dice_logic.dart';
+import 'widgetUI.dart'; // Import file widget
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,40 +31,30 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // Tiêu đề "Tài - Bão - Xỉu"
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          result,
-                          style: const TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children:
-                              diceValues
-                                  .map(
-                                    (e) => Image.asset(
-                                      'assets/images/dice-$e.png',
-                                      width: 80,
-                                    ),
-                                  )
-                                  .toList(),
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: rollDice,
-                          child: const Text('Lắc'),
-                        ),
-                      ],
-                    ),
+                    buildTitleText("Tài"),
+                    buildTitleText("Bão"),
+                    buildTitleText("Xỉu"),
                   ],
                 ),
+                const SizedBox(height: 50),
+                // Nút hiển thị kết quả
+                buildButton(result),
+                const SizedBox(height: 20),
+                // Hiển thị tổng điểm
+                buildSumText(diceValues),
+                const SizedBox(height: 20),
+                // Hiển thị xúc xắc
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: diceValues.map((e) => buildDiceImage(e)).toList(),
+                ),
+                const SizedBox(height: 20),
+                // Nút lắc xúc xắc
+                ElevatedButton(onPressed: rollDice, child: const Text('Lắc')),
               ],
             ),
           ),
